@@ -434,12 +434,12 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  height: 690px; /* increased height for better visibility */
+  height: 690px;
 }
 
 .showcase-box {
   position: relative; /* REQUIRED for button to stay inside the box */
-  flex: 1;
+  flex: 3;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -469,6 +469,7 @@ body {
 .showcase-box h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
+  
 }
 
 .product-grid {
@@ -500,10 +501,11 @@ background: transparent;     /* no background color */
 
 .product-card img {
   width: 100%;
-  max-width: 150px; /* controls image width */
+  max-width: 190px; /* controls image width */
   height: 200px; /* keeps all image boxes same height */
   object-fit: contain; /* prevents cropping */
   margin-bottom: 10px;
+  justify-content: center;
 }
 
 .product-name {
@@ -533,8 +535,9 @@ background: transparent;     /* no background color */
 
 
 .ad-box .ad-content img {
-  width: 100%;
-  height: 62%;
+
+  width: 97%;
+  height: auto;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -557,14 +560,24 @@ background: transparent;     /* no background color */
 
 /* Left Ad box: 2/3 of container */
 .ad-box {
-  flex: 2;
+  flex: 1.5;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex;                /* enable flexbox */
+  justify-content: center;      /* center horizontally */
+  align-items: center;          /* center vertically */
 }
+
+.ad-box img {
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.3);
+  transform-origin: center;
+  display: block;
+}
+
 
 /* Right Products box: 1/3 of container */
 .products-box {
@@ -693,7 +706,7 @@ background: transparent;     /* no background color */
 }
 
 .footer-text-wrapper {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -708,7 +721,7 @@ background: transparent;     /* no background color */
 }
 
 /* Optional: wrap long text nicely on mobile */
-@media (max-width: 768px) {
+@media (max-width: 85%) {
   .footer-text-section {
     font-size: 12px;
   }
@@ -783,39 +796,63 @@ background: transparent;     /* no background color */
 /* Small Bottom Bar */
 .footer-bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* left and right sides */
   align-items: center;
   background-color: #0d1a33;
   padding: 15px 20px;
   font-size: 13px;
-  flex-wrap: wrap;
+  color: #ccc;
+  flex-wrap: nowrap; /* keep one line */
 }
 
-.footer-bottom .footer-text-buttons a {
+.bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* spacing between text and links */
+}
+
+.bottom-left p {
+  margin: 0;
+  white-space: nowrap; /* keeps © text in one line */
+}
+
+.footer-text-buttons {
+  display: flex;
+  gap: 10px; /* space between links */
+  flex-wrap: nowrap;
+}
+
+.footer-text-buttons a {
   color: #ccc;
   text-decoration: none;
-  margin: 0 5px;
 }
 
-.footer-bottom .footer-text-buttons a:hover {
+.footer-text-buttons a:hover {
   color: #fff;
   text-decoration: underline;
 }
 
-.footer-bottom img {
-  width: 35px;
-  margin-left: 10px;
+.bottom-right img {
+  width: 220px; /* adjust as needed */
+  height: auto;
   vertical-align: middle;
 }
 
-/* Responsive */
+/* Responsive: stack vertically on small screens */
 @media (max-width: 768px) {
-  .footer-top, .footer-bottom {
+  .footer-bottom {
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
   }
-  
-  .footer-bottom img {
-    margin-left: 5px;
+
+  .bottom-left {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .bottom-right img {
+    width: 180px;
   }
 }
